@@ -28,18 +28,14 @@ public class SimplifyUtilityTests
     // }
 
     [Test]
-    public void Simplify2DTimings()
-    {
-        SimplifyTimings(new SimplifyUtility());
-    }
+    [Ignore("Uncomment to run timings")]
+    public void Simplify2DTimings() => SimplifyTimings(new SimplifyUtility());
 
     [Test]
-    public void Simplify3DTimings()
-    {
-        SimplifyTimings(new SimplifyUtility3D());
-    }
+    [Ignore("Uncomment to run timings")]
+    public void Simplify3DTimings() => SimplifyTimings(new SimplifyUtility3D());
 
-    public void SimplifyTimings(ISimplifyUtility utility)
+    public static void SimplifyTimings(ISimplifyUtility utility)
     {
         var points = LongLine.GetPoints();
             
