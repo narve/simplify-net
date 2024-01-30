@@ -1,4 +1,4 @@
-name: Dotnet core build
+name: Build and Deploy NuGet Package
 # This workflow is triggered on pushes to the repository.
 on: [push]
 
