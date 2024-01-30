@@ -4,10 +4,10 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>disable</Nullable>
         <IsPackable>true</IsPackable>
-        <Version>1.0.2</Version>
+        <Version>1.0.3</Version>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <RepositoryType>git</RepositoryType>
-        <PackageProjectUrl>https://github.com/narve/DV8.SimplifyLines</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/narve/simplify-net/</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 
