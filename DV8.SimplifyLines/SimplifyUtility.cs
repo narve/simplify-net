@@ -25,7 +25,7 @@ public class SimplifyUtility : ISimplifyUtility
 {
     // square distance between 2 points
     private static float GetSquareDistance(Vector3 p1, Vector3 p2) =>
-        (p1 - p2).LengthSquared();
+        Vector3.DistanceSquared(p1, p2);
 
     // square distance from a point to a segment
     private static float GetSquareSegmentDistance(Vector3 p, Vector3 p1, Vector3 p2)
