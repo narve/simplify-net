@@ -14,6 +14,7 @@
 // read the original license at https://github.com/mourner/simplify-js
 
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace DV8.SimplifyLines
 {
@@ -24,7 +25,7 @@ namespace DV8.SimplifyLines
     public class SimplifyUtility3D : ISimplifyUtility
     {
         // square distance between 2 points
-        private double GetSquareDistance(Point p1, Point p2)
+        private double GetSquareDistance(Vector3 p1, Vector3 p2)
         {
             double dx = p1.X - p2.X,
                 dy = p1.Y - p2.Y,
@@ -34,7 +35,7 @@ namespace DV8.SimplifyLines
         }
 
         // square distance from a point to a segment
-        private double GetSquareSegmentDistance(Point p, Point p1, Point p2)
+        private double GetSquareSegmentDistance(Vector3 p, Vector3 p1, Vector3 p2)
         {
             var x = p1.X;
             var y = p1.Y;
@@ -71,11 +72,11 @@ namespace DV8.SimplifyLines
         // rest of the code doesn't care about point format
 
         // basic distance-based simplification
-        private List<Point> SimplifyRadialDistance(Point[] points, double sqTolerance)
+        private List<Vector3> SimplifyRadialDistance(Vector3[] points, float sqTolerance)
         {
             var prevPoint = points[0];
-            var newPoints = new List<Point> {prevPoint};
-            Point point = null;
+            var newPoints = new List<Vector3> {prevPoint};
+            var point = Vector3.Zero;
 
             for (var i = 1; i < points.Length; i++)
             {
@@ -95,7 +96,7 @@ namespace DV8.SimplifyLines
         }
 
         // simplification using optimized Douglas-Peucker algorithm with recursion elimination
-        private List<Point> SimplifyDouglasPeucker(Point[] points, double sqTolerance)
+        private List<Vector3> SimplifyDouglasPeucker(Vector3[] points, double sqTolerance)
         {
             var len = points.Length;
             var markers = new int?[len];
@@ -103,7 +104,7 @@ namespace DV8.SimplifyLines
             int? last = len - 1;
             int? index = 0;
             var stack = new List<int?>();
-            var newPoints = new List<Point>();
+            var newPoints = new List<Vector3>();
 
             markers[first.Value] = markers[last.Value] = 1;
 
@@ -162,16 +163,16 @@ namespace DV8.SimplifyLines
         /// <param name="tolerance">Tolerance tolerance in the same measurement as the point coordinates</param>
         /// <param name="highestQuality">Enable highest quality for using Douglas-Peucker, set false for Radial-Distance algorithm</param>
         /// <returns>Simplified list of points</returns>
-        public List<Point> Simplify(Point[] points, double tolerance = 0.3, bool highestQuality = false)
+        public List<Vector3> Simplify(Vector3[] points, float tolerance = 0.3f, bool highestQuality = false)
         {
             if(points == null || points.Length == 0)
-                return new List<Point>();
+                return new List<Vector3>();
 
             var sqTolerance = tolerance*tolerance;
 
             if (!highestQuality)
             {
-                List<Point> points2 = SimplifyRadialDistance(points, sqTolerance);
+                List<Vector3> points2 = SimplifyRadialDistance(points, sqTolerance);
                 return SimplifyDouglasPeucker(points2.ToArray(), sqTolerance);
             }
 
@@ -185,7 +186,7 @@ namespace DV8.SimplifyLines
         /// <param name="tolerance">Tolerance tolerance in the same measurement as the point coordinates</param>
         /// <param name="highestQuality">Enable highest quality for using Douglas-Peucker, set false for Radial-Distance algorithm</param>
         /// <returns>Simplified list of points</returns>
-        public static List<Point> SimplifyArray(Point[] points, double tolerance = 0.3, bool highestQuality = false)
+        public static List<Vector3> SimplifyArray(Vector3[] points, float tolerance = 0.3f, bool highestQuality = false)
         {
             return new SimplifyUtility().Simplify(points, tolerance, highestQuality);
         }

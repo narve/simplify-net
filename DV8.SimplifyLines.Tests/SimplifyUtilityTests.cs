@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
+using System.Numerics;
 using NUnit.Framework;
 
 namespace DV8.SimplifyLines.Tests;
@@ -28,11 +30,11 @@ public class SimplifyUtilityTests
     // }
 
     [Test]
-    [Ignore("Uncomment to run timings")]
+    // [Ignore("Uncomment to run timings")]
     public void Simplify2DTimings() => SimplifyTimings(new SimplifyUtility());
 
     [Test]
-    [Ignore("Uncomment to run timings")]
+    // [Ignore("Uncomment to run timings")]
     public void Simplify3DTimings() => SimplifyTimings(new SimplifyUtility3D());
 
     public static void SimplifyTimings(ISimplifyUtility utility)
@@ -119,10 +121,13 @@ public class SimplifyUtilityTests
             new Point(839.57,390.40),new Point(848.40,407.55),new Point(839.51,432.76),new Point(853.97,471.15),
             new Point(866.36,480.77)};
 
-        var result = utility.Simplify(points, 5);
+        var pointsV = points.Select(p => new Vector3((float)p.X, (float)p.Y, (float)p.Z)).ToArray();
+        var simplifiedV = simplified.Select(p => new Vector3((float)p.X, (float)p.Y, (float)p.Z)).ToArray();
+        
+        var result = utility.Simplify(pointsV, 5);
 
-        Assert.AreEqual(simplified.Length, result.Count);
-        Assert.That(simplified, Is.EquivalentTo(result));
+        Assert.AreEqual(simplifiedV.Length, result.Count);
+        Assert.That(simplifiedV, Is.EquivalentTo(result));
     }
 
     #endregion
@@ -143,7 +148,7 @@ public class SimplifyUtilityTests
 
     public static void SimplifySinglePointResultShouldOnlyContainSinglePoint(ISimplifyUtility utility)
     {
-        var point = new Point(224.55, 250.15);
+        var point = new Vector3(224.55f, 250.15f, 0);
         var result = utility.Simplify(new[] { point });
 
         Assert.AreEqual(1, result.Count);
@@ -169,7 +174,7 @@ public class SimplifyUtilityTests
 
     public void SimplifyWithEmptyArrayShouldReturnEmptyList(ISimplifyUtility utility)
     {
-        var result = utility.Simplify(Array.Empty<Point>());
+        var result = utility.Simplify(Array.Empty<Vector3>());
 
         Assert.AreEqual(0, result.Count);
     }
