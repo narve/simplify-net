@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DV8.SimplifyLines", "DV8.SimplifyLines\DV8.SimplifyLines.csproj", "{EFD8656F-D6D5-4C8E-995B-0B66A2424075}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DV8.SimplifyLines.Tests", "DV8.SimplifyLines.Tests\DV8.SimplifyLines.Tests.csproj", "{71FEDF93-F785-4CE5-8CC1-0AF7433F9EFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFD8656F-D6D5-4C8E-995B-0B66A2424075}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFD8656F-D6D5-4C8E-995B-0B66A2424075}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFD8656F-D6D5-4C8E-995B-0B66A2424075}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFD8656F-D6D5-4C8E-995B-0B66A2424075}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71FEDF93-F785-4CE5-8CC1-0AF7433F9EFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71FEDF93-F785-4CE5-8CC1-0AF7433F9EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71FEDF93-F785-4CE5-8CC1-0AF7433F9EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71FEDF93-F785-4CE5-8CC1-0AF7433F9EFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
