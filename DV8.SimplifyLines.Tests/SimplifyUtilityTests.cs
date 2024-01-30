@@ -30,14 +30,14 @@ public class SimplifyUtilityTests
     // }
 
     [Test]
-    // [Ignore("Uncomment to run timings")]
+    [Ignore("Uncomment to run timings")]
     public void Simplify2DTimings() => SimplifyTimings(new SimplifyUtility());
 
     [Test]
-    // [Ignore("Uncomment to run timings")]
+    [Ignore("Uncomment to run timings")]
     public void Simplify3DTimings() => SimplifyTimings(new SimplifyUtility3D());
 
-    public static void SimplifyTimings(ISimplifyUtility utility)
+    private static void SimplifyTimings(ISimplifyUtility utility)
     {
         var points = LongLine.GetPoints();
             
@@ -47,12 +47,12 @@ public class SimplifyUtilityTests
 
         Console.WriteLine("First time utility warmup took: " + watch.ElapsedTicks + " ticks");
 
-        for (int i = 0; i < 10; i++)
+        for (var i = 0; i < 10; i++)
         {
             const int times = 1000;
             long totalTime = 0;
 
-            for (int b = 0; b < times; b++)
+            for (var b = 0; b < times; b++)
             {
                 watch = Stopwatch.StartNew();
                 utility.Simplify(points);
@@ -80,7 +80,7 @@ public class SimplifyUtilityTests
         SimplifyWithMultiplePointsShouldSimplifyCorrectly(new SimplifyUtility3D());
     }
 
-    public void SimplifyWithMultiplePointsShouldSimplifyCorrectly(ISimplifyUtility utility)
+    private static void SimplifyWithMultiplePointsShouldSimplifyCorrectly(ISimplifyUtility utility)
     {
         var points = new[] {
             new Point(224.55,250.15),new Point(226.91,244.19),new Point(233.31,241.45),new Point(234.98,236.06),
@@ -146,7 +146,7 @@ public class SimplifyUtilityTests
     //     SimplifySinglePointResultShouldOnlyContainSinglePoint(new SimplifyUtility3D());
     // }
 
-    public static void SimplifySinglePointResultShouldOnlyContainSinglePoint(ISimplifyUtility utility)
+    private static void SimplifySinglePointResultShouldOnlyContainSinglePoint(ISimplifyUtility utility)
     {
         var point = new Vector3(224.55f, 250.15f, 0);
         var result = utility.Simplify(new[] { point });
@@ -172,7 +172,7 @@ public class SimplifyUtilityTests
         SimplifyWithEmptyArrayShouldReturnEmptyList(new SimplifyUtility3D());
     }
 
-    public void SimplifyWithEmptyArrayShouldReturnEmptyList(ISimplifyUtility utility)
+    private static void SimplifyWithEmptyArrayShouldReturnEmptyList(ISimplifyUtility utility)
     {
         var result = utility.Simplify(Array.Empty<Vector3>());
 

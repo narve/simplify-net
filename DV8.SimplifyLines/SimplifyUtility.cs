@@ -30,26 +30,22 @@ public class SimplifyUtility : ISimplifyUtility
     // square distance from a point to a segment
     private static float GetSquareSegmentDistance(Vector3 p, Vector3 p1, Vector3 p2)
     {
-        var xy = p1;
-        var d = p2 - xy;
-
+        var d = p2 - p1;
         if (d != Vector3.Zero)
         {
-            var tmp = (p - xy) * d;
-            var t = (tmp.X + tmp.Y) / d.LengthSquared();
-
+            var t = Vector3.Dot(p-p1, d) / d.LengthSquared();;
             switch (t)
             {
                 case > 1:
-                    xy = p2;
+                    p1 = p2;
                     break;
                 case > 0:
-                    xy += d * t;
+                    p1 += d * t;
                     break;
             }
         }
 
-        d = p - xy;
+        d = p - p1;
         return d.LengthSquared();
     }
 
