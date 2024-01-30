@@ -1,3 +1,14 @@
+DV8.SimplifyLines
+====
+
+An updated fork of https://github.com/imshz/simplify-net
+
+Changes: 
+- updated .Net version
+- fixed spelling errors
+- updated code to modern standard
+- changed namespace to DV8.SimplifyLines to enable NuGet package
+
 simplify-net
 ===========
 
