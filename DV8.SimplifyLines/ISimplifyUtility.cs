@@ -28,4 +28,6 @@ public interface ISimplifyUtility
     /// <param name="highestQuality">Enable highest quality for using Douglas-Peucker, set false for Radial-Distance algorithm</param>
     /// <returns>Simplified list of points</returns>
     List<Vector3> Simplify(Vector3[] points, float tolerance = 0.3f, bool highestQuality = false);
+    
+    public bool IsPointValid(Vector3 p);
 }

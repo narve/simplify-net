@@ -23,6 +23,9 @@ namespace DV8.SimplifyLines;
 /// </summary>
 public class SimplifyUtility : ISimplifyUtility
 {
+    public bool IsPointValid(Vector3 p) => 
+        p.X <= 90.0 && p.Y is >= -90.0f and <= 180.0f && p.X >= -180.0f;
+    
     // square distance between 2 points
     private static float GetSquareDistance(Vector3 p1, Vector3 p2) =>
         Vector3.DistanceSquared(p1, p2);
@@ -52,13 +55,13 @@ public class SimplifyUtility : ISimplifyUtility
     // rest of the code doesn't care about point format
 
     // basic distance-based simplification
-    private static List<Vector3> SimplifyRadialDistance(Vector3[] points, float sqTolerance)
+    private static List<Vector3> SimplifyRadialDistance(IReadOnlyList<Vector3> points, float sqTolerance)
     {
         var prevPoint = points[0];
         var newPoints = new List<Vector3> {prevPoint};
         var point = Vector3.Zero;
 
-        for (var i = 1; i < points.Length; i++)
+        for (var i = 1; i < points.Count; i++)
         {
             point = points[i];
 
