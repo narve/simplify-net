@@ -13,6 +13,7 @@
 // This code is provided as is by the author. For complete license please
 // read the original license at https://github.com/mourner/simplify-js
 
+using System;
 using System.Collections.Generic;
 using System.Numerics;
 
@@ -27,7 +28,7 @@ public interface ISimplifyUtility
     /// <param name="tolerance">Tolerance tolerance in the same measurement as the point coordinates</param>
     /// <param name="highestQuality">Enable highest quality for using Douglas-Peucker, set false for Radial-Distance algorithm</param>
     /// <returns>Simplified list of points</returns>
-    List<Vector3> Simplify(Vector3[] points, float tolerance = 0.3f, bool highestQuality = false);
+    List<Vector3> Simplify(ReadOnlySpan<Vector3> points, float tolerance = 0.3f, bool highestQuality = false);
     
     public bool IsPointValid(Vector3 p);
 }

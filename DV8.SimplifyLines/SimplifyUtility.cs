@@ -13,6 +13,7 @@
 // This code is provided as is by the author. For complete license please
 // read the original license at https://github.com/mourner/simplify-js
 
+using System;
 using System.Collections.Generic;
 using System.Numerics;
 
@@ -55,13 +56,13 @@ public class SimplifyUtility : ISimplifyUtility
     // rest of the code doesn't care about point format
 
     // basic distance-based simplification
-    private static List<Vector3> SimplifyRadialDistance(IReadOnlyList<Vector3> points, float sqTolerance)
+    private static List<Vector3> SimplifyRadialDistance(ReadOnlySpan<Vector3> points, float sqTolerance)
     {
         var prevPoint = points[0];
         var newPoints = new List<Vector3> {prevPoint};
         var point = Vector3.Zero;
 
-        for (var i = 1; i < points.Count; i++)
+        for (var i = 1; i < points.Length; i++)
         {
             point = points[i];
 
@@ -79,9 +80,9 @@ public class SimplifyUtility : ISimplifyUtility
     }
 
     // simplification using optimized Douglas-Peucker algorithm with recursion elimination
-    private static List<Vector3> SimplifyDouglasPeucker(IReadOnlyList<Vector3> points, double sqTolerance)
+    private static List<Vector3> SimplifyDouglasPeucker(ReadOnlySpan<Vector3> points, double sqTolerance)
     {
-        var len = points.Count;
+        var len = points.Length;
         var markers = new int?[len];
         int? first = 0;
         int? last = len - 1;
@@ -144,7 +145,7 @@ public class SimplifyUtility : ISimplifyUtility
     /// <param name="tolerance">Tolerance tolerance in the same measurement as the point coordinates</param>
     /// <param name="highestQuality">Enable highest quality for using Douglas-Peucker, set false for Radial-Distance algorithm</param>
     /// <returns>Simplified list of points</returns>
-    public List<Vector3> Simplify(Vector3[] points, float tolerance = 0.3f, bool highestQuality = false)
+    public List<Vector3> Simplify(ReadOnlySpan<Vector3> points, float tolerance = 0.3f, bool highestQuality = false)
     {
         if(points == null || points.Length == 0)
             return new List<Vector3>();
@@ -165,6 +166,6 @@ public class SimplifyUtility : ISimplifyUtility
     /// <param name="tolerance">Tolerance tolerance in the same measurement as the point coordinates</param>
     /// <param name="highestQuality">Enable highest quality for using Douglas-Peucker, set false for Radial-Distance algorithm</param>
     /// <returns>Simplified list of points</returns>
-    public static List<Vector3> SimplifyArray(Vector3[] points, float tolerance = 0.3f, bool highestQuality = false) =>
+    public static List<Vector3> SimplifyArray(ReadOnlySpan<Vector3> points, float tolerance = 0.3f, bool highestQuality = false) =>
          new SimplifyUtility().Simplify(points, tolerance, highestQuality);
 }
