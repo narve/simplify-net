@@ -20,7 +20,7 @@ public class SimplifyShapesTests
 
 
         var simplified = SimplifyUtility.SimplifyArray(points.ToArray());
-        SaveAsSvg("high-resolution-square-simplified", points);
+        SaveAsSvg("high-resolution-square-simplified", simplified);
         // Note: 5 points, not 4, because we need to close the square
         AreEqual(5, simplified.Count);
     }
@@ -34,7 +34,7 @@ public class SimplifyShapesTests
         AreEqual(6284, points.Count);
 
         var simplified = new SimplifyUtility().Simplify(points.ToArray(), 0.1f);
-        SaveAsSvg("high-resolution-circle-simplified", points);
+        SaveAsSvg("high-resolution-circle-simplified", simplified);
         // Some magic number... at least less than points.length
         AreEqual(33, simplified.Count);
     }
