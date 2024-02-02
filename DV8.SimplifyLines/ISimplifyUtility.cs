@@ -1,19 +1,4 @@
-﻿// High-performance polyline simplification library
-//
-// This is a port of simplify-js by Vladimir Agafonkin, Copyright (c) 2012
-// https://github.com/mourner/simplify-js
-// 
-// The code is ported from JavaScript to C#.
-// The library is created as portable and 
-// is targeting multiple Microsoft plattforms.
-//
-// This library was ported by imshz @ http://www.shz.no
-// https://github.com/imshz/simplify-net
-//
-// This code is provided as is by the author. For complete license please
-// read the original license at https://github.com/mourner/simplify-js
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Numerics;
 
@@ -29,6 +14,4 @@ public interface ISimplifyUtility
     /// <param name="highestQuality">Enable highest quality for using Douglas-Peucker, set false for Radial-Distance algorithm</param>
     /// <returns>Simplified list of points</returns>
     List<Vector3> Simplify(ReadOnlySpan<Vector3> points, float tolerance = 0.3f, bool highestQuality = false);
-    
-    public bool IsPointValid(Vector3 p);
 }
