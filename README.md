@@ -38,11 +38,20 @@ Example SVGs
 ===
 The following SVGs are generated using the SimplifyShapesTests.cs
 
-![high-resolution-square.svg](high-resolution-square.svg) (~10000 points)
+Square (~10000 points)
+![high-resolution-square.svg](high-resolution-square.svg) 
+
+Simplified square (~10000 points)
 ![high-resolution-square-simplified.svg](high-resolution-square-simplified.svg) (5 points)
 
-![high-resolution-circle.svg](high-resolution-circle.svg) (~6284 points)
-![high-resolution-circle-simplified.svg](high-resolution-circle-simplified.svg) (~33 points)
+Cicle (~6284 points)
+![high-resolution-circle.svg](high-resolution-circle.svg) 
+
+Simplified circle (~33 points)
+![high-resolution-circle-simplified.svg](high-resolution-circle-simplified.svg) 
+
+Very simplified circle (~9 points)
+![high-resolution-circle-ultra-simplified.svg](high-resolution-circle-ultra-simplified.svg) 
 
 Changes from simplify.net:
 ===

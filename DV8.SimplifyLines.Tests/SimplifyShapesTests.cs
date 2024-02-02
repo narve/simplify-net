@@ -36,6 +36,11 @@ public class SimplifyShapesTests
         SaveAsSvg("high-resolution-circle-simplified", simplified);
         // Some magic number... at least less than points.length
         AreEqual(33, simplified.Count);
+        
+        var simplified2 = new SimplifyUtility().Simplify(points.ToArray(), 5f);
+        SaveAsSvg("high-resolution-circle-ultra-simplified", simplified2);
+        // Some magic number... at least less than points.length
+        AreEqual(9, simplified2.Count);
     }
 
     /// Make a square box with multiple points along each edge, 
@@ -104,7 +109,9 @@ public class SimplifyShapesTests
         xmlns=""http://www.w3.org/2000/svg""
 >
   <g>
-    <path stroke=""pink"" stroke-width=""2"" fill=""none"" 
+    <path stroke=""pink"" stroke-width=""4""  
+        fill=""pink""
+        fill-opacity=""0.5"" 
  d=""{pointString}""/>
   </g>
 </svg>";
