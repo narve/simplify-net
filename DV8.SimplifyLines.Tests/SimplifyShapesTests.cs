@@ -120,6 +120,7 @@ public class SimplifyShapesTests
         var d = new DirectoryInfo(".");
         while(!d.Name.Contains("DV8.SimplifyLines.Tests"))
             d = d.Parent;
+        d = d.Parent;
         
         // var f = new FileInfo(d, fileName + ".svg");
         var abs = Path.Combine(d.FullName, fileName + ".svg");
