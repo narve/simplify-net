@@ -34,6 +34,15 @@ See SimplifyShapesTests.cs for full code and more examples
         AreEqual(5, simplified.Count); 
 ```
 
+Example SVGs
+===
+The following SVGs are generated using the SimplifyShapesTests.cs
+
+![high-resolution-square.svg](high-resolution-square.svg) (~10000 points)
+![high-resolution-square-simplified.svg](high-resolution-square-simplified.svg) (5 points)
+
+![high-resolution-circle.svg](high-resolution-circle.svg) (~6284 points)
+![high-resolution-circle-simplified.svg](high-resolution-circle-simplified.svg) (~33 points)
 
 Changes from simplify.net:
 ===
