@@ -47,7 +47,7 @@ Changes from simplify.net:
 
 Developers
 ===
-Narve Sætre [](https://github.com/narve) and [Kai Drange](https://github.com/kaidrange)
+[Narve Sætre](https://github.com/narve) and [Kai Drange](https://github.com/kaidrange)
 
 simplify-net
 ===========
