@@ -18,7 +18,6 @@ public class SimplifyShapesTests
         AreEqual(4 * 1001 +1, points.Count);
         SaveAsSvg("high-resolution-square", points);
 
-
         var simplified = SimplifyUtility.SimplifyArray(points.ToArray());
         SaveAsSvg("high-resolution-square-simplified", simplified);
         // Note: 5 points, not 4, because we need to close the square
@@ -86,13 +85,6 @@ public class SimplifyShapesTests
             // increment angle by delta
             theta += delta;
         }
-        //
-        // for (var i = 0.0f; i <= radius; i += delta)
-        //     points.Add(new(i, (radius-i)*(radius-i), 0));
-        // for (var i = radius; i >= 0; i -= delta)
-        //     points.Add(new(i, -i*i, 0));
-        // for (var i = 0.0f; i <= radius; i += delta)
-        //     points.Add(new(-i, i*i, 0));
 
         return points;
     }
@@ -105,17 +97,16 @@ public class SimplifyShapesTests
             " ",
             points.Select(p => $"L {p.X} {p.Y}").ToArray());
 
-        // pointString = "M 0 0 L 90 0 L 90 90 L 0 90 L 0 0";
-
         var svg = @$"<?xml version=""1.0"" encoding=""iso-8859-1""?>
 <!DOCTYPE svg PUBLIC ""-//W3C//DTD SVG 1.1//EN"" ""http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"">
 <svg
         version=""1.1""
         xmlns=""http://www.w3.org/2000/svg""
 >
-<g>
-    <path d=""{pointString}""/>
-</g>
+  <g>
+    <path stroke=""pink"" stroke-width=""2"" fill=""none"" 
+ d=""{pointString}""/>
+  </g>
 </svg>";
         var d = new DirectoryInfo(".");
         while(!d.Name.Contains("DV8.SimplifyLines.Tests"))
@@ -126,5 +117,4 @@ public class SimplifyShapesTests
         var abs = Path.Combine(d.FullName, fileName + ".svg");
         File.WriteAllText(abs, svg);
     }
-    
 }
