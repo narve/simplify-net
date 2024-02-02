@@ -49,7 +49,8 @@ Developers
 ===
 [Narve Sætre](https://github.com/narve) and [Kai Drange](https://github.com/kaidrange)
 
-simplify-net
+
+Original description from simplify-net
 ===========
 
 A .NET port of simplify-js (https://github.com/mourner/simplify-js)
