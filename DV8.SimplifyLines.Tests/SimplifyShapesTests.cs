@@ -30,15 +30,14 @@ public class SimplifyShapesTests
         AreEqual(9, simplified.Count);
     }    
 
+    /// Make a square box with multiple points along each edge, 
+    /// should simplify to 4 points + origin
     private static List<Vector3> CreateHighResolutionSquare()
     {
-        var points = new List<Vector3>();
-
-        // Make a square box with multiple points along each edge, 
-        // should simplify to 4 points + origin
-
         const float size = 10.0f;
         const float delta = 0.01f;
+
+        var points = new List<Vector3>();
 
         for (var i = 0.0f; i <= size; i += delta)
             points.Add(new (i, 0, 0));
@@ -48,23 +47,21 @@ public class SimplifyShapesTests
             points.Add(new (size - i, size, 0));
         for (var i = 0.0f; i <= size; i += delta)
             points.Add(new (0, size - i, 0));
+        
         return points;
     }
     
+
+    /// Make a curved line with high resolution
+    /// Should simplify to less points
     private static List<Vector3> CreateHighResolutionCurve()
     {
-        var points = new List<Vector3>();
-
-        // Make a curved line with high resolution
-        // Should simplify to less points
-
         const float size = 10.0f;
         const float delta = 0.001f;
 
-        for (var i = 0.0f; i <= size; i += delta)
-        {
-            points.Add(new (i, i * i, 0));
-        }
+        var points = new List<Vector3>();
+
+        for (var i = 0.0f; i <= size; i += delta) points.Add(new (i, i * i, 0));
 
         return points;
     }
