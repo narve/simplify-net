@@ -45,6 +45,10 @@ Changes from simplify.net:
 - changed data structure to Vector3, to enable hardware acceleration
 
 
+Developers
+===
+Narve Sætre [](https://github.com/narve) and [Kai Drange](https://github.com/kaidrange)
+
 simplify-net
 ===========
 
