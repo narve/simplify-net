@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+>
+  <g>
+    <path stroke="pink" stroke-width="4"  
+        fill="pink"
+        fill-opacity="0.5" 
+ d="M 60 40 L 60 40 L 54.59281 53.676617 L 41.295017 59.95803 L 23.858234 51.808617 L 20.147217 37.577812 L 27.17097 24.656727 L 41.13162 20.03204 L 54.48038 26.204403 L 60 39.9963"/>
+  </g>
+</svg>
