@@ -49,7 +49,7 @@ Simplified square (5 points)
 ![high-resolution-square-simplified.svg](high-resolution-square-simplified.svg)
 
 
-Cicle (~6284 points)
+Circle (~6284 points)
 ---
 ![high-resolution-circle.svg](high-resolution-circle.svg) 
 
@@ -75,7 +75,7 @@ Changes from simplify.net:
 - changed data structure to Vector3, to enable hardware acceleration
 
 
-Developers
+Developers (of this fork)
 ===
 [Narve Sætre](https://github.com/narve) and [Kai Drange](https://github.com/kaidrange)
 
